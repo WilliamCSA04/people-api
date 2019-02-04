@@ -9,11 +9,8 @@ class People < ApplicationRecord
 
   def new_age
     if age_changed?
-      present = Time.current
-      datetime_of_birth = present - self.age.years
-      date_of_birth = datetime_of_birth.to_date
-      is_a_valid_age = date_of_birth == self.birth_at.to_date
-      self.errors.add(:age, "Invalid age")
+      years_between_new_age_and_today = PeopleHelper.years_between_dates(self.birth_at)
+      self.errors.add(:age, "Invalid age") unless PeopleHelper.is_a_valid_age?(new_age, years_between_new_age_and_today)
     end
   end
 end
