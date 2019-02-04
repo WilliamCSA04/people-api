@@ -43,6 +43,16 @@ class PeoplesController < ApplicationController
     end
   end
 
+  def destroy
+    id_to_search = params[:id]
+    people = People.find_by_id(id_to_search)
+    if people.destroy
+      render(json: people.as_json, status: :ok)
+    else
+      render_error(people.errors)
+    end
+  end
+
   private
 
   def render_error(message)
