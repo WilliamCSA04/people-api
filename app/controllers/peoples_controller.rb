@@ -10,4 +10,9 @@ class PeoplesController < ApplicationController
     end
   end
 
+  def all
+    peoples = People.all
+    render(json: peoples.as_json, status: :ok)
+  end
+
 end
