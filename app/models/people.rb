@@ -10,7 +10,13 @@ class People < ApplicationRecord
   # Call method new_age when update a data from Peoples table
   validate :new_age, on: :update
 
+  before_create :set_age
+
   private
+
+  def set_age
+    self.age = PeopleHelper.years_between_dates(self.birth_at)
+  end
 
   # This method will be triggered whenever a data from Peoples table is updates
   def new_age
@@ -18,7 +24,7 @@ class People < ApplicationRecord
     if age_changed?
 
       # Call a static method called years_between_dates from PeopleHelper class find at ./app/helpers
-      # Another valid call to this method is: PeopleHelper.years_between_dates(self.birth_at, Time.current)
+      # Another way to call this method is: PeopleHelper.years_between_dates(self.birth_at, Time.current)
       years_between_new_age_and_today = PeopleHelper.years_between_dates(self.birth_at)
 
       # After "unless": Call a static method called is_a_valid_age? from PeopleHelper class find at ./app/helpers
