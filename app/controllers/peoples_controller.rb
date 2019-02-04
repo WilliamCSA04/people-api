@@ -6,7 +6,7 @@ class PeoplesController < ApplicationController
       people = People.find(id_to_search)
       render(json: people.as_json, status: :ok)
     rescue => error
-      render(json: {error: error.message}, status: :unprocessable_entity)
+      render_error(error.message)
     end
   end
 
