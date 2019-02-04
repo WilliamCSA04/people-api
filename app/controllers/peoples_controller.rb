@@ -20,13 +20,22 @@ class PeoplesController < ApplicationController
       people = People.create!(create_params)
       render(json: people.as_json, status: :ok)
     rescue => error
-      render_exception(error.message)
+      render_error(error.message)
+    end
+  end
+
+  def create
+    people = People.new(create_params)
+    if people.save
+      render(json: people.as_json, status: :ok)
+    else
+      render_error(people.errors)
     end
   end
 
   private
 
-  def render_exception(message)
+  def render_error(message)
     render(json: {error: message}, status: :unprocessable_entity)
   end
 
