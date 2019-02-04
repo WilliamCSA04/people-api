@@ -10,10 +10,12 @@ class People < ApplicationRecord
   # Call method new_age when update a data from Peoples table
   validate :new_age, on: :update
 
+  # Call set_age method before insert new data into peoples table
   before_create :set_age
 
   private
 
+  # Calculate the age based on birth_at and current datetime
   def set_age
     self.age = PeopleHelper.years_between_dates(self.birth_at)
   end
