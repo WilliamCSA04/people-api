@@ -15,15 +15,6 @@ class PeoplesController < ApplicationController
     render(json: peoples.as_json, status: :ok)
   end
 
-  def create!
-    begin
-      people = People.create!(create_params)
-      render(json: people.as_json, status: :ok)
-    rescue => error
-      render_error(error.message)
-    end
-  end
-
   def create
     people = People.new(create_params)
     if people.save
