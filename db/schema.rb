@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190204223908) do
+ActiveRecord::Schema.define(version: 20190205011311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "peoples", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name", null: false
     t.integer "age", null: false
     t.datetime "birth_at", default: "2019-02-05 01:09:37", null: false
