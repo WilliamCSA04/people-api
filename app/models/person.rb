@@ -31,7 +31,7 @@ class Person < ApplicationRecord
 
       # After "unless": Call a static method called is_a_valid_age? from PersonHelper class find at ./app/helpers
       # Before "unless: self.errors.add(:age, "Invalid age") will execute unless is_a_valid_age? returns true
-      self.errors.add(:age, "Invalid age") unless PersonHelper.is_a_valid_age?(new_age, years_between_new_age_and_today)
+      self.errors.add(:age, "Invalid age") unless PersonHelper.is_a_valid_age?(self.age, years_between_new_age_and_today)
 
     end
   end
