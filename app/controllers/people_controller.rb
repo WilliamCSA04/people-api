@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
 
-  def index
+  def show
     begin
       id_to_search = params[:id]
       people = People.find(id_to_search)
@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
     end
   end
 
-  def all
+  def index
     peoples = People.all
     render(json: peoples.as_json, status: :ok)
   end
