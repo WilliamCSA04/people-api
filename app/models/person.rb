@@ -5,7 +5,7 @@ class Person < ApplicationRecord
   validates :name, :birth_at, presence: true
 
   # Force age to be a integer, from 0 to 150 when create or update a data from Peoples table
-  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 150 }
+  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 150 }, on: :update
   
   # Call method new_age when update a data from Peoples table
   validate :new_age, on: :update
