@@ -1,4 +1,4 @@
-class PersonHelper
+module PersonHelper
 
   # Any method that starts with self, is a static method
 
