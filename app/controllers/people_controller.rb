@@ -16,7 +16,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    person = Person.new(create_params)
+    person = Person.new(needed_params)
     if person.save
       render(json: person.as_json, status: :ok)
     else
@@ -27,7 +27,7 @@ class PeopleController < ApplicationController
   def update
     id_to_search = params[:id]
     person = Person.find_by_id(id_to_search)
-    if person.update(update_params)
+    if person.update(needed_params)
       render(json: person.as_json, status: :ok)
     else
       render_error(person.errors)
@@ -50,11 +50,7 @@ class PeopleController < ApplicationController
     render(json: {error: message}, status: :unprocessable_entity)
   end
 
-  def create_params
-    params.permit(:name, :birth_at)
-  end
-
-  def update_params
-    params.permit(:name, :age)
+  def needed_params
+    params.permit(:name, :birth_at, :age)
   end
 end
