@@ -17,7 +17,7 @@ class Person < ApplicationRecord
 
   # Calculate the age based on birth_at and current datetime
   def set_age
-    self.age = PeopleHelper.years_between_dates(self.birth_at)
+    self.age = PersonHelper.years_between_dates(self.birth_at)
   end
 
   # This method will be triggered whenever a data from Peoples table is updates
@@ -25,13 +25,13 @@ class Person < ApplicationRecord
     # This is a Active Record method, return true if the age column is being updated
     if age_changed?
 
-      # Call a static method called years_between_dates from PeopleHelper class find at ./app/helpers
-      # Another way to call this method is: PeopleHelper.years_between_dates(self.birth_at, Time.current)
-      years_between_new_age_and_today = PeopleHelper.years_between_dates(self.birth_at)
+      # Call a static method called years_between_dates from PersonHelper class find at ./app/helpers
+      # Another way to call this method is: PersonHelper.years_between_dates(self.birth_at, Time.current)
+      years_between_new_age_and_today = PersonHelper.years_between_dates(self.birth_at)
 
-      # After "unless": Call a static method called is_a_valid_age? from PeopleHelper class find at ./app/helpers
+      # After "unless": Call a static method called is_a_valid_age? from PersonHelper class find at ./app/helpers
       # Before "unless: self.errors.add(:age, "Invalid age") will execute unless is_a_valid_age? returns true
-      self.errors.add(:age, "Invalid age") unless PeopleHelper.is_a_valid_age?(new_age, years_between_new_age_and_today)
+      self.errors.add(:age, "Invalid age") unless PersonHelper.is_a_valid_age?(new_age, years_between_new_age_and_today)
 
     end
   end
