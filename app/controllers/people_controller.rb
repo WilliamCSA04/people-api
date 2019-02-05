@@ -1,46 +1,46 @@
-class PeopleController < ApplicationController
+class PersonController < ApplicationController
 
   def show
     begin
       id_to_search = params[:id]
-      people = People.find(id_to_search)
-      render(json: people.as_json, status: :ok)
+      person = Person.find(id_to_search)
+      render(json: person.as_json, status: :ok)
     rescue => error
       render_error(error.message)
     end
   end
 
   def index
-    peoples = People.all
-    render(json: peoples.as_json, status: :ok)
+    persons = Person.all
+    render(json: persons.as_json, status: :ok)
   end
 
   def create
-    people = People.new(create_params)
-    if people.save
-      render(json: people.as_json, status: :ok)
+    person = Person.new(create_params)
+    if person.save
+      render(json: person.as_json, status: :ok)
     else
-      render_error(people.errors)
+      render_error(person.errors)
     end
   end
 
   def update
     id_to_search = params[:id]
-    people = People.find_by_id(id_to_search)
-    if people.update(update_params)
-      render(json: people.as_json, status: :ok)
+    person = Person.find_by_id(id_to_search)
+    if person.update(update_params)
+      render(json: person.as_json, status: :ok)
     else
-      render_error(people.errors)
+      render_error(person.errors)
     end
   end
 
   def destroy
     id_to_search = params[:id]
-    people = People.find_by_id(id_to_search)
-    if people.destroy
-      render(json: people.as_json, status: :ok)
+    person = Person.find_by_id(id_to_search)
+    if person.destroy
+      render(json: person.as_json, status: :ok)
     else
-      render_error(people.errors)
+      render_error(person.errors)
     end
   end
 
