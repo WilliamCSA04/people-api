@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20190204223908) do
   create_table "peoples", force: :cascade do |t|
     t.string "name", null: false
     t.integer "age", null: false
-    t.datetime "birth_at", default: "2019-02-04 22:13:48", null: false
+    t.datetime "birth_at", default: "2019-02-05 01:09:37", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

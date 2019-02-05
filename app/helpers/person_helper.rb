@@ -1,4 +1,4 @@
-class PeopleHelper
+class PersonHelper
 
   # Any method that starts with self, is a static method
 

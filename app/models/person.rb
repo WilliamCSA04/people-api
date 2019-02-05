@@ -1,4 +1,4 @@
-class People < ApplicationRecord
+class Person < ApplicationRecord
 
   # https://guides.rubyonrails.org/active_record_validations.html
   # Force name and birth_at to have something when create or update a data from Peoples table
