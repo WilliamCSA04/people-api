@@ -1,4 +1,4 @@
-class PersonController < ApplicationController
+class PeopleController < ApplicationController
 
   def show
     begin
